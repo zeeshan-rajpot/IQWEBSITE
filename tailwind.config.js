@@ -27,7 +27,8 @@ export default {
         servicesBg:
           "linear-gradient(to right, #1293EC0D, #A976FD26, #1293EC0D)",
         bghero: "url('/public/Group 498.jpg')",
-        bgellipse: "url('/Ellipse.svg')",
+        bgellipse: "url('/Cover.png')",
+        bgIqTest: "url('/Cover1.png')",
       },
     },
   },
