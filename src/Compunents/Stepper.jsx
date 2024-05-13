@@ -60,7 +60,7 @@ const CustomStepper = () => {
         <p className="text-xl lg:text-3xl">Choose the missing figure</p>
       </div>
       <div className="flex justify-center">
-        <img src="pngegg 1.png" alt="" className="  lg:w-4/12" />
+        <img src="/pngegg 1.png" alt="" className="  lg:w-4/12" />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 place-items-center md:w-6/12 m-auto">
         <div  className="w-8/12 md:w-12/12" >
