@@ -32,7 +32,7 @@ const Home = () => {
             </p>
 
             <div>
-              <Link to="/schedule-service" className="px-[100px] bg-theme text-white px-8 py-3 border border-theme rounded-full  hover:bg-transparent hover:text-theme duration-200">
+              <Link to="/takeTest" className="px-[100px] bg-theme text-white px-8 py-3 border border-theme rounded-full  hover:bg-transparent hover:text-theme duration-200">
                 Start the test
               </Link>
             </div>

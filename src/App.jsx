@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home";
 import TakeTest from "./Pages/TakeTest/index";
 import "./App.css";
+import Payment from "./Pages/Payment/Payment";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,12 @@ function App() {
       path: "/takeTest",
       element: <TakeTest />,
     },
+    {
+      path: "/Payment",
+      element: <Payment />,
+    },
+
+
   ]);
 
   return <RouterProvider router={router} />;
