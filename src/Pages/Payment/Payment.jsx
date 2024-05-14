@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 
 const Payment = () => {
     const [paymentCompolete, setPaymentCompolete] = useState(true);
+    const [payment, setPayment] = useState(true);
+
+
+    const handlePayment = () => {
+        setPayment(!payment);
+    };
 
     const handleClick = () => {
         setPaymentCompolete(!paymentCompolete);
@@ -43,15 +49,16 @@ const Payment = () => {
 
             <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-              Full Name
+              First Name
               </label>
               <div className="mt-2">
                 <input
+                placeholder='First Name'
                   type="text"
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -62,20 +69,54 @@ const Payment = () => {
               </label>
               <div className="mt-2">
                 <input
+                 placeholder='Last Name'
                   type="text"
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
-                  className="block w-full rounded-md  py-1.5 text-gray-900 shadow-md  ring-gray-300 placeholder:text-gray-400 border-0   sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md px-3  py-1.5 text-gray-900 shadow-md  ring-gray-300 placeholder:text-gray-400 border-0   sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
-
+            <div className="sm:col-span-3">
+              <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+               Email
+              </label>
+              <div className="mt-2">
+                <input
+                 placeholder='Email'
+                  type="text"
+                  name="last-name"
+                  id="last-name"
+                  autoComplete="family-name"
+                  className="block w-full rounded-md px-3  py-1.5 text-gray-900 shadow-md  ring-gray-300 placeholder:text-gray-400 border-0   sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
             </div>
 
 
-            <div className='text-center'>
+
+            
+<div className='flex justify-center mt-12'>
+<button 
+onClick={handlePayment}
+ className="px-[100px] bg-theme text-white px-8 py-3 border border-theme rounded-full  hover:bg-transparent hover:text-theme duration-200"
+ >
+               Complete
+              </button>
+              </div>
+              {payment && (
+<>
+
+       
+            </>
+
+ )}
+      {!payment && (
+<>
+<div className='text-center'>
             <p className="lg:text-xl font-normal text-ptheme mt-6">
             Choose payment method and fill details
             </p>
@@ -89,8 +130,6 @@ const Payment = () => {
 
 
 
-
-            
 
             <div className="w-11/12 md:w-5/6 lg:w-5/6 2xl:w-5/6 mx-auto  mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="col-span-6">
@@ -107,21 +146,23 @@ const Payment = () => {
   </label>
   <div className="mt-2">
     <input
+    placeholder='  Name on card'
       type="text"
       name="first-name"
       id="first-name"
       autoComplete="given-name"
-      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+      className="block w-full rounded-md border-0 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
     />
   </div>
 </div>
 
 <div className="col-span-6 sm:col-span-3">
   <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-  card Number
+  Card Number
   </label>
   <div className="mt-2">
     <input
+    placeholder='Card Number'
       type="number"
       name="last-name"
       id="last-name"
@@ -133,10 +174,11 @@ const Payment = () => {
 
 <div className=" col-span-6 sm:col-span-3">
   <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-  expiry date
+ Expiry date
   </label>
   <div className="mt-2">
     <input
+    placeholder='Expiry date'
       type="text"
       name="last-name"
       id="last-name"
@@ -152,6 +194,7 @@ const Payment = () => {
   </label>
   <div className="mt-2">
     <input
+    placeholder='  Security code'
       type="text"
       name="last-name"
       id="last-name"
@@ -163,8 +206,6 @@ const Payment = () => {
 
 
 </div>
-
-
 <div className='flex justify-center mt-12'>
 <button 
 onClick={handleClick}
@@ -174,6 +215,16 @@ onClick={handleClick}
               </button>
 
 </div>
+
+
+</>
+
+)} 
+
+            
+
+
+
 
       </div>   
       </section>

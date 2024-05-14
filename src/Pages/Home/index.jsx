@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import Navbar from '../../Compunents/Navbar'
 import Footer from '../../Compunents/Footer'
 import { Link } from 'react-router-dom'
+import DistributionIq from './DistributionI';
+import DistributionAge from './DistributionAge';
+import Studylevl from './Studylevl';
+import StudyLevelsecond from './StudyLevelsecond';
+
 
 const Home = () => {
   const [showAdditionalColumns, setShowAdditionalColumns] = useState(false);
@@ -256,7 +261,7 @@ const Home = () => {
 
 
 
-      <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  py-10   mx-auto">
+      <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  pt-10   mx-auto">
         <div className='text-center'>
         <h2 className="text-themeDarkBlue text-3xl md:text-4xl lg:text-5xl font-semibold py-10">
         Our Statistics
@@ -268,20 +273,21 @@ const Home = () => {
             </p>
 
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-6 pt-14">
 <div className="col-span-3">
-  <img src="/Frame 31.png" alt="" />
+  {/* <img src="/Frame 31.png" alt="" /> */}
+  <DistributionIq/>
   </div>
 <div className="col-span-3">
-<img src="/Frame 32.png" alt="" />
+<DistributionAge/>
 
 </div>
 <div className="col-span-3">
-<img src="/Frame 33.png" alt="" />
+<Studylevl/>
 
 </div>
 <div className="col-span-3">
-<img src="/Frame 34.png" alt="" />
+<StudyLevelsecond/>
 
 </div>
         
