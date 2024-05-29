@@ -15,7 +15,7 @@ const CustomStepper = () => {
     { label: "", data: "Data for Step 1" },
     { label: "", data: "Data for Step 2" },
     { label: "", data: "Data for Step 3" },
-    // Add more steps with their respective data as needed
+    
   ];
 
   return (
