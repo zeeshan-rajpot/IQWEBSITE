@@ -20,7 +20,11 @@ const Stepper = () => {
 
   const handleNext = () => {
     if (steps[activeStep].correctAnswer === formData[`step${activeStep + 1}`]) {
-      setCorrectCount((prevCount) => prevCount + 1);
+      setCorrectCount((prevCount) => {
+        const newCount = prevCount + 1;
+        console.log("Correct Count:", newCount); // Log the correct count
+        return newCount;
+      });
     }
     setActiveStep((prevStep) => prevStep + 1);
   };
@@ -98,7 +102,6 @@ const Stepper = () => {
         "/Group 5930.png",
       ],
       correctAnswer: "/Group 5930.png",
-
     },
     {
       label: "",
@@ -112,7 +115,6 @@ const Stepper = () => {
         "/Group 5916.png",
       ],
       correctAnswer: "/Group 5916.png",
-
     },
   ];
 
