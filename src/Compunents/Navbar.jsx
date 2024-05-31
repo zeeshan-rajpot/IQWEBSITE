@@ -15,14 +15,14 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <nav className="bg-white border-gray-200 ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
             to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src="/logo.png" className="h-8" alt="iq Logo" />
-            <span className="self-center text-black text-2xl font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-black text-2xl font-semibold whitespace-nowrap ">
               IQ-Test
             </span>
           </Link>
@@ -44,7 +44,7 @@ const Navbar = () => {
             <button
               onClick={toggleMobileMenu}
               type="button"
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
               aria-controls="navbar-search"
               aria-expanded={isMobileMenuOpen ? "true" : "false"}
             >
@@ -69,10 +69,10 @@ const Navbar = () => {
           <div
             className={`${
               isMobileMenuOpen ? "block" : "hidden"
-            } md:block w-full md:flex md:w-auto md:order-1`}
+            } md:block w-full  md:w-auto md:order-1`}
             id="navbar-search"
           >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
               <li>
                 <NavLink
                   to="/takeTest"
