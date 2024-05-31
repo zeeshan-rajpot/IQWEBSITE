@@ -91,9 +91,21 @@ const Payment = () => {
                     </p>
                   </div>
                   <div className=" flex justify-center ">
-                    <img src="/Frame 989.png" alt="" className="w-32 h-16" />
-                    <img src="/Frame 991.png" alt="" className="w-32 h-16" />
-                    <img src="/Frame 992.png" alt="" className="w-32 h-16" />
+                    <img
+                      src="/Frame 989.png"
+                      alt=""
+                      className=" w-28 md:w-32 h-16"
+                    />
+                    <img
+                      src="/Frame 991.png"
+                      alt=""
+                      className="w-28 md:w-32  h-16"
+                    />
+                    <img
+                      src="/Frame 992.png"
+                      alt=""
+                      className="w-28 md:w-32  h-16"
+                    />
                   </div>
 
                   <div className="w-11/12 md:w-5/6 lg:w-5/6 2xl:w-5/6 mx-auto  mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -228,7 +240,6 @@ const Payment = () => {
           </div>
         )}
       </div>
-    
     </>
   );
 };
