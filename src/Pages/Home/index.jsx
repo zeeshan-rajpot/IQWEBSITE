@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Navbar from "../../Compunents/Navbar";
 import Footer from "../../Compunents/Footer";
 import { Link } from "react-router-dom";
+import DistributionIq from "./DistributionI";
+import DistributionAge from "./DistributionAge";
+import Studylevl from "./Studylevl";
+import StudyLevelsecond from "./StudyLevelsecond";
 
 const Home = () => {
   const [showAdditionalColumns, setShowAdditionalColumns] = useState(false);
@@ -72,9 +76,9 @@ const Home = () => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="col-span-4 shadow rounded-xl p-3 flex items-center justify-start"
+                className="col-span-4 shadow rounded-xl p-3 flex items-center justify-start space-y-6"
               >
-                <div className="absolute translate-x-[280px] translate-y-[-60px] md:translate-x-[310px]">
+                <div className="absolute translate-x-[240px] translate-y-[-60px] md:translate-x-[240px]">
                   <img src="/Group.png" alt="" />
                 </div>
                 <div>
@@ -134,13 +138,15 @@ const Home = () => {
       <section className=" bg-[#F9FCFF] bg-bgIqTest  bg-no-repeat bg-contain bg-right-bottom	">
         <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  py-5 md:py-10 lg:pt-16 2xl:py-[105px]  mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4  ">
-              <div className="w-48 md:w-[80%]  m-auto text-center">
+            <div className=" block md:block col-span-1">
+              <div className="w-64 md:w-[80%]  m-auto text-center">
                 <img
                   src="/Rectangle 329.png"
                   alt="hero-one"
                   className="w-[500px] mx-auto"
                 />
               </div>
+            </div>
             <div className="flex flex-col gap-y-7  align-center bg-no-repeat col-span-3 mt-[94px]">
               <h2 className="text-themeDarkBlue text-3xl md:text-3xl lg:text-4xl font-semibold">
                 The purpose of the IQ test
@@ -222,8 +228,8 @@ const Home = () => {
               </h2>
               <p className="lg:text-xl font-normal text-ptheme text-justify md:text-start">
                 People with much higher than average intellectual quotients (
-                130), also called ‘gifted’, tend to be more at ease than others
-                during intellectual activities. The most well-known
+                {">"} 130), also called ‘gifted’, tend to be more at ease than
+                others during intellectual activities. The most well-known
                 characteristics of the gifted are:
               </p>
               {/* <ul> */}
@@ -272,7 +278,7 @@ const Home = () => {
         </div>
       </section>
 
-      <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  py-10   mx-auto">
+      <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  pt-10   mx-auto">
         <div className="text-center">
           <h2 className="text-themeDarkBlue text-3xl md:text-4xl lg:text-5xl font-semibold py-10">
             Our Statistics
@@ -285,18 +291,19 @@ const Home = () => {
             years and can evolve, depending on the new results recorded.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-6 pt-14">
           <div className="col-span-3">
-            <img src="/Frame 31.png" alt="" />
+            {/* <img src="/Frame 31.png" alt="" /> */}
+            <DistributionIq />
           </div>
           <div className="col-span-3">
-            <img src="/Frame 32.png" alt="" />
+            <DistributionAge />
           </div>
           <div className="col-span-3">
-            <img src="/Frame 33.png" alt="" />
+            <Studylevl />
           </div>
           <div className="col-span-3">
-            <img src="/Frame 34.png" alt="" />
+            <StudyLevelsecond />
           </div>
         </div>
       </div>

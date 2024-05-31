@@ -19,6 +19,8 @@ function App() {
       path: "/Payment",
       element: <Payment />,
     },
+
+
   ]);
 
   return <RouterProvider router={router} />;
