@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
@@ -36,8 +37,8 @@ const Navbar = () => {
                   onChange={handleLanguageChange}
                 >
                   <option value="English">English</option>
-                  <option value="Spanish">Spanish</option>
-                  <option value="French">French</option>
+                  {/* <option value="Spanish">Spanish</option>
+                  <option value="French">French</option> */}
                 </select>
               </div>
             </div>
@@ -82,7 +83,7 @@ const Navbar = () => {
                   Take the test
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <a className="block py-2 px-3 md:p-0 text-sm	">
                   Recover my results
                 </a>
@@ -91,17 +92,24 @@ const Navbar = () => {
                 <a href="#" className="block py-2 px-3 md:p-0 text-sm	">
                   Reliability of the test
                 </a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 px-3 md:p-0 text-sm	">
-                  Average IQ per country{" "}
-                </a>
-              </li>
-              <li>
+              </li> */}
+              <ScrollLink
+                to="statistics" // ID of the target element (Statistics component)
+                spy={true}
+                smooth={true}
+                offset={-20} // Adjust this value according to your layout
+                duration={1000}
+                className=" block py-2 px-3 md:p-0 text-sm	focus:cursor-auto"
+              >
+                <li>
+                  <a>Average IQ per country</a>
+                </li>
+              </ScrollLink>
+              {/* <li>
                 <a href="#" className="block py-2 px-3 md:p-0 text-sm	">
                   Contact{" "}
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
