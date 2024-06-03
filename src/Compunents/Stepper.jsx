@@ -20,11 +20,7 @@ const Stepper = () => {
 
   const handleNext = () => {
     if (steps[activeStep].correctAnswer === formData[`step${activeStep + 1}`]) {
-      setCorrectCount((prevCount) => {
-        const newCount = prevCount + 1;
-        console.log("Correct Count:", newCount); // Log the correct count
-        return newCount;
-      });
+      setCorrectCount((prevCount) => prevCount + 1);
     }
     setActiveStep((prevStep) => prevStep + 1);
   };
@@ -111,10 +107,10 @@ const Stepper = () => {
         "/Group 5933.png",
         "/Group 5934.png",
         "/Group 5935.png",
-        "/Group 5927.png",
+        "/Group 5924.png",
         "/Group 5916.png",
       ],
-      correctAnswer: "/Group 5916.png",
+      correctAnswer: "/Group 5924.png",
     },
   ];
 
@@ -149,11 +145,15 @@ const Stepper = () => {
                 className="w-6/12 lg:w-3/12"
               />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 place-items-center md:w-6/12 m-auto my-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 place-items-center md:w-6/12 m-auto my-12">
               {steps[activeStep].options.map((option, index) => (
                 <div
                   key={index}
-                  className="w-8/12 md:w-12/12 flex  items-center justify-center"
+                  className={`relative w-8/12 md:w-12/12 ${
+                    formData[`step${activeStep + 1}`] === option
+                      ? "border-2 border-red-500 p-2 w-40"
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -162,9 +162,15 @@ const Stepper = () => {
                     value={option}
                     checked={formData[`step${activeStep + 1}`] === option}
                     onChange={handleChange}
-                    className="mb-2 me-2"
+                    className="mb-2 me-2 hidden "
                   />
-                  <label htmlFor={`step${activeStep + 1}_option${index}`}>
+                  <span className="absolute top-[-30px] left-[50%] transform -translate-x-[50%] text-xl font-normal">
+                    {index + 1}
+                  </span>
+                  <label
+                    htmlFor={`step${activeStep + 1}_option${index}`}
+                    className="flex items-center cursor-pointer"
+                  >
                     <img src={option} alt={`Option ${index + 1}`} />
                   </label>
                 </div>
