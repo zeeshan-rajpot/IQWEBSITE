@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Stepper = () => {
+const Stepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
     step1: "",
