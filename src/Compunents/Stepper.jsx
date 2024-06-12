@@ -405,7 +405,7 @@ const Stepper = () => {
                     htmlFor={`step${activeStep + 1}_option${index}`}
                     className="flex items-center cursor-pointer"
                   >
-                    <img src={option} alt={`Option ${index + 1}`} className=" object-contain"/>
+                    <img src={option} alt={`Option ${index + 1}`} className="h-[150px] object-contain"/>
                   </label>
                 </div>
               ))}
