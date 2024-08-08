@@ -12,27 +12,6 @@ const Stepper = () => {
     step6: "",
   });
 
-  const [correctCount, setCorrectCount] = useState(0);
-
-  const handleStepClick = (step) => {
-    setActiveStep(step);
-  };
-
-  const handleNext = () => {
-    if (steps[activeStep].correctAnswer === formData[`step${activeStep + 1}`]) {
-      setCorrectCount((prevCount) => prevCount + 1);
-    }
-    setActiveStep((prevStep) => prevStep + 1);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   const steps = [
     {
       label: "",
@@ -46,7 +25,9 @@ const Stepper = () => {
         "/Frame 262.png",
       ],
       correctAnswer: "/Frame 260.png",
-    }, {
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 166.png",
       options: [
@@ -58,7 +39,9 @@ const Stepper = () => {
         "/Frame 269.png",
       ],
       correctAnswer: "/Frame 269.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 165.png",
       options: [
@@ -70,7 +53,9 @@ const Stepper = () => {
         "/Frame 274.png",
       ],
       correctAnswer: "/Frame 264.png",
-    },{
+      marks: 3,
+    },
+    {
       label: "",
       image: "/Frame 240.png",
       options: [
@@ -82,8 +67,9 @@ const Stepper = () => {
         "/Frame 280.png",
       ],
       correctAnswer: "/Frame 276.png",
+      marks: 2,
     },
-  {
+    {
       label: "",
       image: "/Frame 244.png",
       options: [
@@ -94,8 +80,10 @@ const Stepper = () => {
         "/Frame 285.png",
         "/Frame 286.png",
       ],
-      correctAnswer: "/Frame 283 .png",
-    },{
+      correctAnswer: "/Frame 283.png",
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 250.png",
       options: [
@@ -106,8 +94,10 @@ const Stepper = () => {
         "/Frame 347.png",
         "/Frame 348.png",
       ],
-      correctAnswer: "/Frame 343 .png",
-    },{
+      correctAnswer: "/Frame 343.png",
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 248.png",
       options: [
@@ -118,8 +108,10 @@ const Stepper = () => {
         "/Frame 297.png",
         "/Frame 298.png",
       ],
-      correctAnswer: "/Frame 296 .png",
-    },{
+      correctAnswer: "/Frame 296.png",
+      marks: 3,
+    },
+    {
       label: "",
       image: "/Frame 242.png",
       options: [
@@ -130,8 +122,10 @@ const Stepper = () => {
         "/Frame 290.png",
         "/Frame 292.png",
       ],
-      correctAnswer: "/Frame 288 .png",
-    } ,{
+      correctAnswer: "/Frame 288.png",
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 238.png",
       options: [
@@ -142,8 +136,10 @@ const Stepper = () => {
         "/Frame 322.png",
         "/Frame 323.png",
       ],
-      correctAnswer: "/Frame 320 .png",
-    },{
+      correctAnswer: "/Frame 320.png",
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 245.png",
       options: [
@@ -155,7 +151,9 @@ const Stepper = () => {
         "/Frame 354.png",
       ],
       correctAnswer: "/Frame 353.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 311.png",
       options: [
@@ -167,7 +165,9 @@ const Stepper = () => {
         "/Frame 304.png",
       ],
       correctAnswer: "/Frame 301.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 252.png",
       options: [
@@ -179,7 +179,9 @@ const Stepper = () => {
         "/Frame 329.png",
       ],
       correctAnswer: "/Frame 326.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 206.png",
       options: [
@@ -191,7 +193,9 @@ const Stepper = () => {
         "/Frame 366.png",
       ],
       correctAnswer: "/Frame 365.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 219.png",
       options: [
@@ -203,7 +207,9 @@ const Stepper = () => {
         "/Frame 310.png",
       ],
       correctAnswer: "/Frame 309.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 169.png",
       options: [
@@ -215,7 +221,9 @@ const Stepper = () => {
         "/Frame 384.png",
       ],
       correctAnswer: "/Frame 381.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 170.png",
       options: [
@@ -227,7 +235,9 @@ const Stepper = () => {
         "/Frame 372.png",
       ],
       correctAnswer: "/Frame 370.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 171.png",
       options: [
@@ -239,7 +249,9 @@ const Stepper = () => {
         "/Frame 342.png",
       ],
       correctAnswer: "/Frame 342.png",
-    },{
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 391.png",
       options: [
@@ -251,7 +263,9 @@ const Stepper = () => {
         "/Frame 378.png",
       ],
       correctAnswer: "/Frame 376.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 212.png",
       options: [
@@ -262,8 +276,10 @@ const Stepper = () => {
         "/Frame 333.png",
         "/Frame 335.png",
       ],
-      correctAnswer: "/Frame 260.png",
-    },{
+      correctAnswer: "/Frame 332.png",
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 230.png",
       options: [
@@ -275,7 +291,9 @@ const Stepper = () => {
         "/Frame 318.png",
       ],
       correctAnswer: "/Frame 314.png",
-    },{
+      marks: 2,
+    },
+    {
       label: "",
       image: "/Frame 256.png",
       options: [
@@ -287,7 +305,9 @@ const Stepper = () => {
         "/Frame 360.png",
       ],
       correctAnswer: "/Frame 359.png",
-    },{
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 392.png",
       options: [
@@ -298,8 +318,10 @@ const Stepper = () => {
         "/Frame 398.png",
         "/Frame 399.png",
       ],
-      correctAnswer: "/Frame 396.png ",
-    },{
+      correctAnswer: "/Frame 396.png",
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 394.png",
       options: [
@@ -311,7 +333,9 @@ const Stepper = () => {
         "/Frame 406.png",
       ],
       correctAnswer: "/Frame 406.png",
-    },{
+      marks: 1,
+    },
+    {
       label: "",
       image: "/Frame 407.png",
       options: [
@@ -323,9 +347,51 @@ const Stepper = () => {
         "/Frame 414.png",
       ],
       correctAnswer: "/Frame 414.png",
+      marks: 1,
     },
-  
   ];
+
+  const [correctCount, setCorrectCount] = useState(0);
+  const [correctness, setCorrectness] = useState(Array(steps.length).fill(false));
+
+  const handleStepClick = (step) => {
+    setActiveStep(step);
+  };
+
+  const handleNext = () => {
+    const currentAnswer = formData[`step${activeStep + 1}`];
+    const isCorrect = steps[activeStep].correctAnswer === currentAnswer;
+
+    if (isCorrect) {
+      setCorrectCount((prevCount) => prevCount + steps[activeStep].marks);
+      setCorrectness((prevCorrectness) => {
+        const newCorrectness = [...prevCorrectness];
+        newCorrectness[activeStep] = true;
+        return newCorrectness;
+      });
+    }
+
+    setActiveStep((prevStep) => prevStep + 1);
+    console.log(correctCount);
+  };
+
+
+  const handleFinish = () => {
+    console.log("Total Score:", correctCount);
+    console.log("Correctness for each step:", correctness);
+
+    // IQ Calculation
+    const IQ = 100 + 1.4 * (correctCount - 30);
+    console.log("Calculated IQ:", IQ);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   return (
     <>
@@ -338,9 +404,7 @@ const Stepper = () => {
                 ? "bg-blue-500 text-white"
                 : "bg-gray-300 text-gray-600"
             }`}
-            onClick={() => handleStepClick(index)}
           >
-            {step.label}
           </div>
         ))}
       </div>
@@ -375,16 +439,13 @@ const Stepper = () => {
                     value={option}
                     checked={formData[`step${activeStep + 1}`] === option}
                     onChange={handleChange}
-                    className="mb-2 me-2 hidden "
+                    className="mb-2 me-2 hidden"
                   />
-                  {/* <span className="absolute top-[-30px] left-[50%] transform -translate-x-[50%] text-xl font-normal">
-                    {index + 1}
-                  </span> */}
                   <label
                     htmlFor={`step${activeStep + 1}_option${index}`}
                     className="flex items-center cursor-pointer"
                   >
-                    <img src={option} alt={`Option ${index + 1}`} className=" "/>
+                    <img src={option} alt={`Option ${index + 1}`} />
                   </label>
                 </div>
               ))}
@@ -394,7 +455,12 @@ const Stepper = () => {
               {activeStep < steps.length - 1 && (
                 <button
                   onClick={handleNext}
-                  className="px-[100px] bg-theme text-white py-3 border border-theme rounded-full hover:bg-transparent hover:text-theme duration-200"
+                  disabled={!formData[`step${activeStep + 1}`]}
+                  className={`px-[100px] py-3 border rounded-full duration-200 ${
+                    formData[`step${activeStep + 1}`]
+                      ? "bg-theme text-white border-theme hover:bg-transparent hover:text-theme"
+                      : "bg-gray-300 text-gray-600 border-gray-300 cursor-not-allowed"
+                  }`}
                 >
                   Next
                 </button>
@@ -402,6 +468,7 @@ const Stepper = () => {
               {activeStep === steps.length - 1 && (
                 <Link
                   to="/Payment"
+                  onClick={handleFinish}
                   className="px-[100px] bg-theme text-white py-3 border border-theme rounded-full hover:bg-transparent hover:text-theme duration-200"
                 >
                   Finish

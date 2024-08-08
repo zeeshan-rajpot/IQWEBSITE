@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useMemo ,useEffect  } from "react";
 import Navbar from "../../Compunents/Navbar";
 import Footer from "../../Compunents/Footer";
 import { Link } from "react-router-dom";
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
+
 
 const Payment = () => {
   const [paymentCompolete, setPaymentCompolete] = useState(true);
@@ -14,6 +17,27 @@ const Payment = () => {
   const handleClick = () => {
     setPaymentCompolete(!paymentCompolete);
   };
+
+  const [value, setValue] = useState('')
+  
+  const options = useMemo(() => {
+    return countryList().getData().map(country => ({
+      value: country.value,
+      label: country.label    // Use the country code as the label
+    }))
+  }, [])
+
+  const changeHandler = value => {
+    setValue(value)
+  }
+
+  useEffect(() => {
+    // This code runs whenever the `value` state changes
+    if (value) {
+      console.log(`Selected country: ${value.value}`)
+    }
+  }, [value])
+
   return (
     <>
       <div>
@@ -72,14 +96,18 @@ const Payment = () => {
                       Country
                     </label>
                     <div className="mt-2">
-                      <input
+                      {/* <input
                         placeholder="Country"
                         type="text"
                         name="country"
                         id="country"
                         autoComplete="family-name"
                         className="block w-full rounded-md px-3  py-1.5 text-gray-900 shadow-md  ring-gray-300 placeholder:text-gray-400 border-0   sm:text-sm sm:leading-6"
-                      />
+                      /> */}
+
+     <Select options={options} value={value} onChange={changeHandler} className="border-0" />  
+
+
                     </div>
                   </div>
                 </div>

@@ -27,10 +27,10 @@ const Studylevl = () => {
           },
           xaxis: {
             categories: [
-              "No Diploma",
-              "2",
+              "No-Diploma",
+              "No-Diploma",
               "4 Year Sd",
-            //   "5 Year Sd",
+              "5 Year Sd",
             
             ],
           },
@@ -72,7 +72,7 @@ const Studylevl = () => {
 
 <p>{chartData.title[0].text}</p>
 
-<ReactApexChart options={chartData.options} series={chartData.series} type="bar" height={300} />
+<ReactApexChart options={chartData.options} series={chartData.series} type="bar" height={380} />
   </div>
   );
 }

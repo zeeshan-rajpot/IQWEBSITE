@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect , useMemo  } from 'react';
 import Navbar from "../../Compunents/Navbar";
 import Footer from "../../Compunents/Footer";
 import { Link } from "react-router-dom";
 import Statistics from "./Statistics";
+
 
 const Home = () => {
   const [showAdditionalColumns, setShowAdditionalColumns] = useState(false);
@@ -16,8 +17,67 @@ const Home = () => {
     { name: "Bob", iq: 92, timestamp: "2 hours ago" },
     // Add more objects as needed
   ];
+
+
+
+
+
+
+
+//   const [position, setPosition] = useState(null);
+//   const [country, setCountry] = useState(null);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     const getCurrentPosition = () => {
+//       return new Promise((resolve, reject) => {
+//         navigator.geolocation.getCurrentPosition(
+//           (position) => {
+//             resolve(position);
+//           },
+//           (error) => {
+//             reject(error);
+//           }
+//         );
+//       });
+//     };
+
+//     const getCountryCode = async (latitude, longitude) => {
+//       const apiKey = '2c966c2eef514178a4ef61f7930c7b4f'; // Replace with your OpenCage API key
+//       const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+
+//       try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         if (data.results && data.results.length > 0) {
+//           const country = data.results[0].components.country;
+//           const countryCode = data.results[0].components.country_code.toUpperCase();
+//           setCountry({ name: country, code: countryCode });
+//         } else {
+//           setError(new Error('Unable to retrieve country data.'));
+//         }
+//       } catch (err) {
+//         setError(err);
+//       }
+//     };
+
+//     getCurrentPosition()
+//       .then((position) => {
+//         setPosition(position);
+//         console.log(position)
+//         const { latitude, longitude } = position.coords;
+//         getCountryCode(latitude, longitude);
+//       })
+//       .catch((error) => {
+//         setError(error);
+//         console.error('Error:', error);
+//       });
+//   }, []);
+// console.log(country)
+
   return (
     <div>
+ 
       <Navbar />
       {/* hero section */}
       <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  py-10 lg:pt-16 2xl:py-[105px]  mx-auto">
