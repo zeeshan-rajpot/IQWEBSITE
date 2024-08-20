@@ -1,10 +1,9 @@
-import React, { useState , useMemo ,useEffect  } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Navbar from "../../Compunents/Navbar";
 import Footer from "../../Compunents/Footer";
 import { Link } from "react-router-dom";
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
-
+import Select from "react-select";
+import countryList from "react-select-country-list";
 
 const Payment = () => {
   const [paymentCompolete, setPaymentCompolete] = useState(true);
@@ -18,25 +17,27 @@ const Payment = () => {
     setPaymentCompolete(!paymentCompolete);
   };
 
-  const [value, setValue] = useState('')
-  
-  const options = useMemo(() => {
-    return countryList().getData().map(country => ({
-      value: country.value,
-      label: country.label    // Use the country code as the label
-    }))
-  }, [])
+  const [value, setValue] = useState("");
 
-  const changeHandler = value => {
-    setValue(value)
-  }
+  const options = useMemo(() => {
+    return countryList()
+      .getData()
+      .map((country) => ({
+        value: country.value,
+        label: country.label,
+      }));
+  }, []);
+
+  const changeHandler = (value) => {
+    setValue(value);
+  };
 
   useEffect(() => {
     // This code runs whenever the `value` state changes
     if (value) {
-      console.log(`Selected country: ${value.value}`)
+      console.log(`Selected country: ${value.value}`);
     }
-  }, [value])
+  }, [value]);
 
   return (
     <>
@@ -90,6 +91,25 @@ const Payment = () => {
 
                   <div className="sm:col-span-3">
                     <label
+                      htmlFor="email"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Email
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        placeholder="Email"
+                        type="text"
+                        name="email"
+                        id="email"
+                        autoComplete="given-email"
+                        className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label
                       htmlFor="country"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
@@ -104,12 +124,75 @@ const Payment = () => {
                         autoComplete="family-name"
                         className="block w-full rounded-md px-3  py-1.5 text-gray-900 shadow-md  ring-gray-300 placeholder:text-gray-400 border-0   sm:text-sm sm:leading-6"
                       /> */}
-
-     <Select options={options} value={value} onChange={changeHandler} className="border-0" />  
-
-
+                      <Select
+                        options={options}
+                        value={value}
+                        onChange={changeHandler}
+                        className="border-0"
+                      />
                     </div>
                   </div>
+
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="age"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Enter Age
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        placeholder="2 Years"
+                        type="number"
+                        name="age"
+                        id="age"
+                        autoComplete="age"
+                        className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-blue-300 shadow-md  placeholder:text-gray-400 focus:ring-1 focus:ring-inset  sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="study_duration"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                     Study Duration
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        placeholder="2 Years"
+                        type="text"
+                        name="study_duration"
+                        id="study_duration"
+                        className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-blue-300 shadow-md  placeholder:text-gray-400 focus:ring-1 focus:ring-inset  sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="study_field"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                     Study Field
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        placeholder="2 Years"
+                        type="text"
+                        name="study_field"
+                        id="study_field"
+                        className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-blue-300 shadow-md  placeholder:text-gray-400 focus:ring-1 focus:ring-inset  sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+
+
+
+
+
                 </div>
 
                 <>
