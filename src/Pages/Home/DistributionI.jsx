@@ -1,8 +1,9 @@
-import React from "react";
-import ReactApexChart  from 'react-apexcharts';
+import React, { useState, useEffect } from "react";
+import ReactApexChart from "react-apexcharts";
+import { userApi } from "../../api";
 
 const DistributionIq = () => {
-  const chartData = {
+  const [chartData, setChartData] = useState({
     options: {
       chart: {
         type: "bar",
@@ -33,7 +34,6 @@ const DistributionIq = () => {
           "100-109",
           "110-119",
           "120-129",
-        
         ],
       },
       tooltip: {
@@ -52,38 +52,71 @@ const DistributionIq = () => {
       grid: {
         borderColor: "#f1f1f1",
       },
-      
     },
- 
+
     series: [
       {
-        name: "Rides",
+        name: "IQ",
         data: [30, 40, 45, 50, 49, 60, 55],
       },
     ],
 
     title: [
       {
-        text: 'General and international distribution of IQ',
-    },
+        text: "General and international distribution of IQ",
+      },
     ],
+  });
 
+  const fetchData = async () => {
+    try {
+      const response = await userApi.iqdistribution();
+      setChartData((prevData) => ({
+        ...prevData,
+        options: {
+          ...prevData.options,
+          xaxis: {
+            ...prevData.options.xaxis,
+            categories: response.keys,
+          },
+        },
+        series: [
+          {
+            ...prevData.series[0],
+            data: response.values,
+          },
+        ],
+      }));
+    } catch (error) {
+      console.error("Error fetching IQ distribution:", error);
+    }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
 
   return (
     <div className="chart">
-    {/* <Chart
+      {/* <Chart
       options={chartData.options}
       series={chartData.series}
       type="bar"
       height={350}
     /> */}
 
-<p>{chartData.title[0].text}</p>
+      <p>{chartData.title[0].text}</p>
 
-<ReactApexChart options={chartData.options} series={chartData.series} type="bar" height={350} />
-  </div>
+      <ReactApexChart
+        options={chartData.options}
+        series={chartData.series}
+        type="bar"
+        height={350}
+      />
+    </div>
   );
-}
+};
 
 export default DistributionIq;
