@@ -32,6 +32,8 @@ const Home = () => {
   ? formatDistanceToNow(new Date(topScorers[0].createdAt), { addSuffix: true })
   : null;
 
+  // cheen tapak dum dum
+
   //   const [position, setPosition] = useState(null);
   //   const [country, setCountry] = useState(null);
   //   const [error, setError] = useState(null);
