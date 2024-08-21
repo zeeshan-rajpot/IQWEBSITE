@@ -4,10 +4,17 @@ import Footer from "../../Compunents/Footer";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import countryList from "react-select-country-list";
+import { userApi } from "../../api";
 
 const Payment = () => {
   const [paymentCompolete, setPaymentCompolete] = useState(true);
   const [payment, setPayment] = useState(true);
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [value, setValue] = useState("");
+  const [diplomaValue, setDiplomaValue] = useState(null);
+  const [fieldValue, setFieldValue] = useState(null);
 
   const handlePayment = () => {
     setPayment(!payment);
@@ -16,8 +23,6 @@ const Payment = () => {
   const handleClick = () => {
     setPaymentCompolete(!paymentCompolete);
   };
-
-  const [value, setValue] = useState("");
 
   const options = useMemo(() => {
     return countryList()
@@ -33,11 +38,61 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    // This code runs whenever the `value` state changes
     if (value) {
       console.log(`Selected country: ${value.value}`);
     }
   }, [value]);
+
+  const diplomaOptions = [
+    { value: "No Diploma", label: "No Diploma" },
+    { value: "2 Year SD", label: "2 Year SD" },
+    { value: "3 Year SD", label: "3 Year SD" },
+    { value: "4 Year SD", label: "4 Year SD" },
+    { value: "5+ Year SD", label: "5+ Year SD" },
+  ];
+
+  const diplomaHandler = (selectedOption) => {
+    setDiplomaValue(selectedOption);
+    console.log("study duration", selectedOption);
+  };
+  const fieldOptions = [
+    { value: "High School", label: "High School" },
+    { value: "Agriculture", label: "Agriculture" },
+    { value: "Art & Design", label: "Art & Design" },
+    { value: "Education", label: "Education" },
+    { value: "Law", label: "Law" },
+    { value: "Psychology", label: "Psychology" },
+    { value: "Math", label: "Math" },
+  ];
+
+  const fieldHandler = (selectedOption) => {
+    setFieldValue(selectedOption);
+    console.log("study field:", selectedOption);
+  };
+
+  const marks = localStorage.getItem("totalScore");
+  const iqScore = localStorage.getItem("calculatedIQ");
+
+  const handleSubmit = async () => {
+    const postData = {
+      fullname,
+      email,
+      country: value.value,
+      age,
+      studyDuration: diplomaValue ? diplomaValue.label : "",
+      studyLevel: fieldValue ? fieldValue.label : "",
+      marks: marks.toString(),
+      iqScore: iqScore.toString(),
+    };
+
+    try {
+      const response = await userApi.saveResult(postData); 
+      console.log("Data saved successfully:", response);
+      setPaymentCompolete(false);
+    } catch (error) {
+      console.error("Error saving data:", error);
+    }
+  };
 
   return (
     <>
@@ -85,6 +140,8 @@ const Payment = () => {
                         id="name"
                         autoComplete="given-name"
                         className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                        value={fullname}
+                        onChange={(e) => setFullname(e.target.value)}
                       />
                     </div>
                   </div>
@@ -104,6 +161,8 @@ const Payment = () => {
                         id="email"
                         autoComplete="given-email"
                         className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                   </div>
@@ -116,14 +175,6 @@ const Payment = () => {
                       Country
                     </label>
                     <div className="mt-2">
-                      {/* <input
-                        placeholder="Country"
-                        type="text"
-                        name="country"
-                        id="country"
-                        autoComplete="family-name"
-                        className="block w-full rounded-md px-3  py-1.5 text-gray-900 shadow-md  ring-gray-300 placeholder:text-gray-400 border-0   sm:text-sm sm:leading-6"
-                      /> */}
                       <Select
                         options={options}
                         value={value}
@@ -138,16 +189,18 @@ const Payment = () => {
                       htmlFor="age"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Enter Age
+                      Age
                     </label>
                     <div className="mt-2">
                       <input
-                        placeholder="2 Years"
+                        placeholder="18 Years"
                         type="number"
+                        min={0}
                         name="age"
                         id="age"
-                        autoComplete="age"
                         className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-blue-300 shadow-md  placeholder:text-gray-400 focus:ring-1 focus:ring-inset  sm:text-sm sm:leading-6"
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}
                       />
                     </div>
                   </div>
@@ -157,15 +210,14 @@ const Payment = () => {
                       htmlFor="study_duration"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                     Study Duration
+                      Study Duration
                     </label>
                     <div className="mt-2">
-                      <input
-                        placeholder="2 Years"
-                        type="text"
-                        name="study_duration"
-                        id="study_duration"
-                        className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-blue-300 shadow-md  placeholder:text-gray-400 focus:ring-1 focus:ring-inset  sm:text-sm sm:leading-6"
+                      <Select
+                        options={diplomaOptions}
+                        value={diplomaValue}
+                        onChange={diplomaHandler}
+                        className="border-0"
                       />
                     </div>
                   </div>
@@ -175,24 +227,17 @@ const Payment = () => {
                       htmlFor="study_field"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                     Study Field
+                      Study Field
                     </label>
                     <div className="mt-2">
-                      <input
-                        placeholder="2 Years"
-                        type="text"
-                        name="study_field"
-                        id="study_field"
-                        className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-blue-300 shadow-md  placeholder:text-gray-400 focus:ring-1 focus:ring-inset  sm:text-sm sm:leading-6"
+                      <Select
+                        options={fieldOptions}
+                        value={fieldValue}
+                        onChange={fieldHandler}
+                        className="border-0"
                       />
                     </div>
                   </div>
-
-
-
-
-
-
                 </div>
 
                 <>
@@ -304,7 +349,9 @@ const Payment = () => {
                   </div>
                   <div className="flex justify-center mt-12">
                     <button
-                      onClick={handleClick}
+                      onClick={() => {
+                        handleSubmit();
+                      }}
                       className="px-[100px] bg-theme text-white  py-3 border border-theme rounded-full  hover:bg-transparent hover:text-theme duration-200"
                     >
                       Pay Now
@@ -334,7 +381,7 @@ const Payment = () => {
                           John Doe
                         </p>
                         <p className="lg:text-xl font-normal text-ptheme ">
-                          IQ: 142
+                        IQ: {iqScore}
                         </p>
                       </div>
                       <p className="lg:text-xl font-normal text-ptheme ">

@@ -37,9 +37,32 @@ const iqdistribution = async () => {
     }
   };
 
+  const topScores = async () => {
+    try {
+      const response = await apiClient.get(`/result/topScorers`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      throw error;
+    }
+  };
+
+  const saveResult = async (data) => {
+    try {
+      const response = await apiClient.post('result/save', data);
+      return response.data;
+    } catch (error) {
+      console.error("Error saving result:", error);
+      throw error;
+    }
+  };
+
 export default {
     iqdistribution,
     studyfield,
     studyduration,
     agedistribution,
+    topScores,
+    saveResult,
+
 };

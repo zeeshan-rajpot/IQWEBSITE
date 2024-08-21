@@ -60,7 +60,7 @@ const StudyLevelsecond = () => {
    
       series: [
         {
-          name: "Rides",
+          name: "IQ",
           data: [30, 40, 45, 50, 49],
         },
       ],

@@ -10,7 +10,7 @@ const Stepper = () => {
     step4: "",
     step5: "",
     step6: "",
-  });
+  }); 
 
   const steps = [
     {
@@ -378,11 +378,13 @@ const Stepper = () => {
 
   const handleFinish = () => {
     console.log("Total Score:", correctCount);
+    localStorage.setItem("totalScore", correctCount);
     console.log("Correctness for each step:", correctness);
 
     // IQ Calculation
     const IQ = 100 + 1.4 * (correctCount - 30);
     console.log("Calculated IQ:", IQ);
+    localStorage.setItem("calculatedIQ", IQ);
   };
 
   const handleChange = (e) => {
