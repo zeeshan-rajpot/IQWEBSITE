@@ -3,76 +3,62 @@ import ReactApexChart from "react-apexcharts";
 import { userApi } from "../../api";
 
 const StudyLevelsecond = () => {
-
-  const [chartData, setChartData] = useState(
-
-    {
-      options: {
-        chart: {
-          type: "bar",
-          toolbar: {
-            show: false,
-          },
+  const [chartData, setChartData] = useState({
+    options: {
+      chart: {
+        type: "bar",
+        toolbar: {
+          show: false,
         },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-            columnWidth: "55%",
-            colors: {
-              backgroundBarColors: ["#EBEBEB"],
-              backgroundBarOpacity: 1,
-              backgroundBarRadius: 5,
-            },
-            dataLabels: {
-              position: "top",
-            },
-          },
-        },
-        xaxis: {
-          categories: [
-            "<18",
-            "18-29",
-            "30-39",
-            "40-49",
-            "50>",
-     
-          
-          ],
-        },
-        tooltip: {
-          shared: true,
-          intersect: false,
-          y: {
-            formatter: function (val) {
-              return val;
-            },
-          },
-        },
-        fill: {
-          opacity: 1,
-        },
-        colors: ["#3D9BD6"],
-        grid: {
-          borderColor: "#f1f1f1",
-        },
-        
       },
-   
-      series: [
-        {
-          name: "IQ",
-          data: [30, 40, 45, 50, 49],
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          columnWidth: "55%",
+          colors: {
+            backgroundBarColors: ["#EBEBEB"],
+            backgroundBarOpacity: 1,
+            backgroundBarRadius: 5,
+          },
+          dataLabels: {
+            position: "top",
+          },
         },
-      ],
-  
-      title: [
-        {
-          text: 'Distribution by study level',
       },
-      ],
-  
-    }
-  )
+      xaxis: {
+        categories: ["<18", "18-29", "30-39", "40-49", "50>"],
+      },
+      tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+          formatter: function (val) {
+            return val;
+          },
+        },
+      },
+      fill: {
+        opacity: 1,
+      },
+      colors: ["#3D9BD6"],
+      grid: {
+        borderColor: "#f1f1f1",
+      },
+    },
+
+    series: [
+      {
+        name: "IQ",
+        data: [30, 40, 45, 50, 49],
+      },
+    ],
+
+    title: [
+      {
+        text: "Distribution by study level",
+      },
+    ],
+  });
 
   const fetchData = async () => {
     try {
@@ -95,7 +81,6 @@ const StudyLevelsecond = () => {
       }));
 
       // console.log(response);
-      
     } catch (error) {
       console.error("Error fetching IQ distribution:", error);
     }
@@ -104,22 +89,26 @@ const StudyLevelsecond = () => {
   useEffect(() => {
     fetchData();
   }, []);
-    
 
   return (
     <div className="chart">
-    {/* <Chart
+      {/* <Chart
       options={chartData.options}
       series={chartData.series}
       type="bar"
       height={350}
     /> */}
 
-<p>{chartData.title[0].text}</p>
+      <p>{chartData.title[0].text}</p>
 
-<ReactApexChart options={chartData.options} series={chartData.series} type="bar" height={300} />
-  </div>
-  )
-}
+      <ReactApexChart
+        options={chartData.options}
+        series={chartData.series}
+        type="bar"
+        height={300}
+      />
+    </div>
+  );
+};
 
-export default StudyLevelsecond
+export default StudyLevelsecond;
