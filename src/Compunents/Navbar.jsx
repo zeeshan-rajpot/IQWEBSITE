@@ -83,6 +83,15 @@ const Navbar = () => {
                   Take the test
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/blogs"
+                  className="block py-2 px-3 md:p-0 text-sm	"
+                  aria-current="page"
+                >
+                 Blogs
+                </NavLink>
+              </li>
               {/* <li>
                 <a className="block py-2 px-3 md:p-0 text-sm	">
                   Recover my results
