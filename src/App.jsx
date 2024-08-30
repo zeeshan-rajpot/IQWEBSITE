@@ -4,6 +4,8 @@ import Home from "./Pages/Home";
 import TakeTest from "./Pages/TakeTest/index";
 import "./App.css";
 import Payment from "./Pages/Payment/Payment";
+import Blogs from "./Pages/Blogs/Blogs";
+import BlogDetail from "./Pages/Blogs/BlogDetail";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +21,15 @@ function App() {
       path: "/Payment",
       element: <Payment />,
     },
-
+    {
+      path: "/blogs",
+      element: <Blogs />,
+    },
+    {
+      path: "/blogs/blogdetails/:title" ,
+      element: <BlogDetail />,
+    },
+    
 
   ]);
 
