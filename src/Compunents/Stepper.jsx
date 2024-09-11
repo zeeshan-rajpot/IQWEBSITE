@@ -605,16 +605,16 @@ const Stepper = () => {
               <img
                 src={steps[activeStep].image}
                 alt={`Step ${activeStep + 1}`}
-                className="w-6/12 lg:w-3/12"
+                className=" lg:w-3/12"
               />
             </div>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-8 place-items-center md:w-10/12 m-auto my-12">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-3 place-items-center md:w-10/12 m-auto my-12">
               {steps[activeStep].options.map((option, index) => (
                 <div
                   key={index}
                   className={`relative w-10/12 md:w-12/12 ${
                     formData[`step${activeStep + 1}`] === option
-                      ? "border-2 border-red-500 p-2 w-40"
+                      ? "border-2 border-red-500 md:w-auto mx-auto "
                       : ""
                   }`}
                 >
