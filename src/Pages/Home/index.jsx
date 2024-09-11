@@ -1,21 +1,90 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Navbar from "../../Compunents/Navbar";
 import Footer from "../../Compunents/Footer";
 import { Link } from "react-router-dom";
 import Statistics from "./Statistics";
+import { userApi } from "../../api";
+import { formatDistanceToNow } from "date-fns";
 
 const Home = () => {
   const [showAdditionalColumns, setShowAdditionalColumns] = useState(false);
+  const [topScorers, setTopScorers] = useState([]);
 
   const handleImageClick = () => {
     setShowAdditionalColumns(!showAdditionalColumns);
   };
-  const data = [
-    { name: "John", iq: 78, timestamp: "32 mins ago" },
-    { name: "Alice", iq: 85, timestamp: "1 hour ago" },
-    { name: "Bob", iq: 92, timestamp: "2 hours ago" },
-    // Add more objects as needed
-  ];
+
+  const fetchTopScorers = async () => {
+    try {
+      const response = await userApi.topScores();
+      setTopScorers(response);
+      console.log(response);
+    } catch (error) {
+      console.error("Error fetching top scorers:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopScorers();
+  }, []);
+
+  const timestamp = topScorers.length > 0 
+  ? formatDistanceToNow(new Date(topScorers[0].createdAt), { addSuffix: true })
+  : null;
+
+  // cheen tapak dum dum
+
+  //   const [position, setPosition] = useState(null);
+  //   const [country, setCountry] = useState(null);
+  //   const [error, setError] = useState(null);
+
+  //   useEffect(() => {
+  //     const getCurrentPosition = () => {
+  //       return new Promise((resolve, reject) => {
+  //         navigator.geolocation.getCurrentPosition(
+  //           (position) => {
+  //             resolve(position);
+  //           },
+  //           (error) => {
+  //             reject(error);
+  //           }
+  //         );
+  //       });
+  //     };
+
+  //     const getCountryCode = async (latitude, longitude) => {
+  //       const apiKey = '2c966c2eef514178a4ef61f7930c7b4f'; // Replace with your OpenCage API key
+  //       const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+
+  //       try {
+  //         const response = await fetch(url);
+  //         const data = await response.json();
+  //         if (data.results && data.results.length > 0) {
+  //           const country = data.results[0].components.country;
+  //           const countryCode = data.results[0].components.country_code.toUpperCase();
+  //           setCountry({ name: country, code: countryCode });
+  //         } else {
+  //           setError(new Error('Unable to retrieve country data.'));
+  //         }
+  //       } catch (err) {
+  //         setError(err);
+  //       }
+  //     };
+
+  //     getCurrentPosition()
+  //       .then((position) => {
+  //         setPosition(position);
+  //         console.log(position)
+  //         const { latitude, longitude } = position.coords;
+  //         getCountryCode(latitude, longitude);
+  //       })
+  //       .catch((error) => {
+  //         setError(error);
+  //         console.error('Error:', error);
+  //       });
+  //   }, []);
+  // console.log(country)
+
   return (
     <div>
       <Navbar />
@@ -70,7 +139,7 @@ const Home = () => {
         </div>
         <div className=" w-11/12 md:5/6 lg:5/6 2xl:w-4/6  py-10 lg:pt-6 2xl:py-[55px]  mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 p-4 gap-7">
-            {data.map((item, index) => (
+            {topScorers.map((item, index) => (
               <div
                 key={index}
                 className="col-span-4 shadow rounded-xl p-3 flex items-center justify-start space-y-6"
@@ -83,10 +152,10 @@ const Home = () => {
                 </div>
                 <div className="ms-3">
                   <p>
-                    <b>{item.name}</b>
+                    <b>{item.fullname}</b>
                   </p>
-                  <p>IQ: {item.iq}%</p>
-                  <small>{item.timestamp}</small>
+                  <p>IQ: {item.iqScore || 90}%</p>
+                  <small>{timestamp || "1 Hour ago"}</small>
                 </div>
               </div>
             ))}

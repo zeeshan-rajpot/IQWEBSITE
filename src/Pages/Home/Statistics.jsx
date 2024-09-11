@@ -1,10 +1,37 @@
-import React from "react";
+import React , {useState , useEffect}from "react";
 import DistributionIq from "./DistributionI";
 import DistributionAge from "./DistributionAge";
 import Studylevl from "./Studylevl";
 import StudyLevelsecond from "./StudyLevelsecond";
+import { userApi } from '../../api';
+import axios from 'axios';
 
 const Statistics = () => {
+
+
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://iq-website-v39fa.ondigitalocean.app/result/iq-distribution');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        // console.log(data)
+        setData(data);
+      } catch (err) {
+        console.log(err);
+        setError(`Fetch error: ${err.message}`);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <section id="statistics">
