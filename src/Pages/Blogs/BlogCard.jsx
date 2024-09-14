@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const BlogCard = ({ title, date, description, image }) => {
+  const encodedData = encodeURIComponent(JSON.stringify({ title, date, description, image }));
+
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <img src={image} alt={title} className="w-full h-48 object-cover" />
@@ -12,7 +14,7 @@ const BlogCard = ({ title, date, description, image }) => {
         </div>
         <h3 className="text-xl font-semibold mt-2">{title}</h3>
         <p className="text-gray-600 mt-2 text-sm">{description}</p>
-        <Link to={`/blogs/blogdetails/${title}`}>
+        <Link to={`/blogs/blogdetails/${encodedData}`}>
           <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md">
             Read More
           </button>

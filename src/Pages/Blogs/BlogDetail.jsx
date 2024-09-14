@@ -4,7 +4,8 @@ import Navbar from "../../Compunents/Navbar";
 import Footer from "../../Compunents/Footer";
 
 const BlogDetail = () => {
-  const { title } = useParams(); // Fetch the blog title from the URL
+  const { data } = useParams();
+  const blog = JSON.parse(decodeURIComponent(data)); // Fetch the blog title from the URL
   const blogs = [
     {
       title: "Dog Trainer",
@@ -36,7 +37,7 @@ const BlogDetail = () => {
     },
   ];
 
-  const blog = blogs.find((blog) => blog.title === title);
+  // const blog = blogs.find((blog) => blog.title === title);
 
   if (!blog) {
     return <div>Blog not found</div>;

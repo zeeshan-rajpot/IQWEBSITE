@@ -45,6 +45,16 @@ const iqdistribution = async () => {
       console.error("Error fetching user:", error);
       throw error;
     }
+  };  
+  
+  const getblog = async () => {
+    try {
+      const response = await apiClient.get(`admin/get-blog`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      throw error;
+    }
   };
 
   const saveResult = async (data) => {
@@ -64,5 +74,6 @@ export default {
     agedistribution,
     topScores,
     saveResult,
+    getblog,
 
 };
