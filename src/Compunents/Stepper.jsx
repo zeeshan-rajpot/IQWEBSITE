@@ -284,6 +284,20 @@ const Stepper = () => {
       correctAnswer: '/Frame 342.png',
       marks: 1,
     },
+     {
+      label: '14',
+      image: '/Frame 4198.png',
+      options: [
+        '/Frame 4199.png',
+        '/Frame 4200.png',
+        '/Frame 4201.png',
+        '/Frame 4202.png',
+        '/Frame 4203.png',
+        '/Frame 4204.png',
+      ],
+      correctAnswer: '/Frame 4204.png',
+      marks: 1,
+    },
 
     {
       label: '15',
@@ -343,6 +357,20 @@ const Stepper = () => {
         '/Frame 329.png',
       ],
       correctAnswer: '/Frame 326.png',
+      marks: 2,
+    },
+     {
+      label: '4',
+      image: '/Frame 4240.png',
+      options: [
+        '/Frame 4241.png',
+        '/Frame 4242.png',
+        '/Frame 4243.png',
+        '/Frame 4244.png',
+        '/Frame 4245.png',
+        '/Frame 4246.png',
+      ],
+      correctAnswer: '/Frame 4245.png',
       marks: 2,
     },
 
@@ -530,6 +558,20 @@ const Stepper = () => {
         '/Frame 298.png',
       ],
       correctAnswer: '/Frame 296.png',
+      marks: 3,
+    },
+    {
+      label: '3',
+      image: '/Frame 4268.png',
+      options: [
+        '/Frame 4269.png',
+        '/Frame 4270.png',
+        '/Frame 4271.png',
+        '/Frame 4272.png',
+        '/Frame 4273.png',
+        '/Frame 4274.png',
+      ],
+      correctAnswer: '/Frame 4269.png',
       marks: 3,
     },
     {

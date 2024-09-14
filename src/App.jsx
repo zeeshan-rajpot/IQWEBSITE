@@ -26,7 +26,7 @@ function App() {
       element: <Blogs />,
     },
     {
-      path: "/blogs/blogdetails/:title" ,
+      path: "/blogs/blogdetails/:data" ,
       element: <BlogDetail />,
     },
     
