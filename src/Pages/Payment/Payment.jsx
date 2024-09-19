@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import { userApi } from "../../api";
+import emailjs from "emailjs-com";
+import toast from "react-hot-toast";
 
 const Payment = () => {
   const [paymentCompolete, setPaymentCompolete] = useState(true);
@@ -70,8 +72,8 @@ const Payment = () => {
     console.log("study field:", selectedOption);
   };
 
-  const marks = localStorage.getItem("totalScore");
-  const iqScore = localStorage.getItem("calculatedIQ");
+  const marks = sessionStorage.getItem("totalScore");
+  const iqScore = sessionStorage.getItem("calculatedIQ");
 
   const handleSubmit = async () => {
     const postData = {
@@ -81,19 +83,43 @@ const Payment = () => {
       age,
       studyDuration: diplomaValue ? diplomaValue.label : "",
       studyLevel: fieldValue ? fieldValue.label : "",
-      marks: marks.toString(),
-      iqScore: iqScore.toString(),
+      marks: marks,
+      iqScore: iqScore,
     };
+    // console.log(postData);
 
     try {
-      const response = await userApi.saveResult(postData); 
-      console.log("Data saved successfully:", response);
+      // Save result to API
+      const response = await userApi.saveResult(postData);
+      // console.log("Data saved successfully:", response);
+
+      // Prepare EmailJS email data
+      const emailData = {
+        user_name: fullname,
+        user_email: email,
+        user_country: value.label,
+        user_age: age,
+        user_score: marks,
+        user_iq: iqScore,
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        "service_a6ysh0l", // Replace with your EmailJS service ID
+        "template_f921ism", // Replace with your EmailJS template ID
+        emailData,
+        "EuRQ0kgYylG3KHrjK" // Replace with your EmailJS user ID
+      );
+
+      // console.log("Email sent successfully!");
+      console.log("loged data", emailData);
+
+      toast.success("Email sent successfully!");
       setPaymentCompolete(false);
     } catch (error) {
-      console.error("Error saving data:", error);
+      console.error("Error:", error);
     }
   };
-
   return (
     <>
       <div>
@@ -142,6 +168,7 @@ const Payment = () => {
                         className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                         value={fullname}
                         onChange={(e) => setFullname(e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -163,6 +190,7 @@ const Payment = () => {
                         className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900  ring-gray-500 shadow-md  placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                       />
                     </div>
                   </div>
@@ -381,7 +409,7 @@ const Payment = () => {
                           John Doe
                         </p>
                         <p className="lg:text-xl font-normal text-ptheme ">
-                        IQ: {iqScore}
+                          IQ: {iqScore}
                         </p>
                       </div>
                       <p className="lg:text-xl font-normal text-ptheme ">
