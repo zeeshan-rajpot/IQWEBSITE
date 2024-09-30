@@ -597,7 +597,7 @@ const Stepper = () => {
               {steps[activeStep].options.map((option, index) => (
                 <div
                   key={index}
-                  className={`relative w-7/12 md:w-12/12 cursor-pointer ${
+                  className={`relative w-8/12 md:w-12/12 cursor-pointer ${
                     selectedOption === option ? 'border-4 border-theme' : ''
                   }`}
                   onClick={() => handleOptionClick(option)}
