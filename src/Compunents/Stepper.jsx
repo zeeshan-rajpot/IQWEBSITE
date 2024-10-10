@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Stepper = () => {
+const Stepper = ({ elapsedTime }) => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -535,9 +535,11 @@ const Stepper = () => {
 
         sessionStorage.setItem('totalScore', finalScore);
         sessionStorage.setItem('calculatedIQ', IQ);
+        sessionStorage.setItem('spentTime', elapsedTime);
 
         console.log('Final score:', finalScore);
         console.log('Calculated IQ:', IQ);
+        console.log('Time spent on test:', elapsedTime, 'seconds');
 
         navigate('/Payment');
       }
