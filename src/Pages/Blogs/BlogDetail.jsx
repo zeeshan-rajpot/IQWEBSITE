@@ -1,39 +1,35 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Navbar from "../../Compunents/Navbar";
-import Footer from "../../Compunents/Footer";
+import Footer from '../../Compunents/Footer';
+import Navbar from '../../Compunents/Navbar';
 
 const BlogDetail = () => {
   const { data } = useParams();
   const blog = JSON.parse(decodeURIComponent(data)); // Fetch the blog title from the URL
   const blogs = [
     {
-      title: "Dog Trainer",
-      date: "May 30, 2024",
-      description:
-        "Full details about Dog Trainer...",
-      image: "image 58.png",
+      title: 'Dog Trainer',
+      date: 'May 30, 2024',
+      description: 'Full details about Dog Trainer...',
+      image: 'image 58.png',
     },
     {
-      title: "Web Designer",
-      date: "May 30, 2024",
-      description:
-        "Full details about Web Designer...",
-      image: "image 58.png",
+      title: 'Web Designer',
+      date: 'May 30, 2024',
+      description: 'Full details about Web Designer...',
+      image: 'image 58.png',
     },
     {
-      title: "Nursing Assistant",
-      date: "May 30, 2024",
-      description:
-        "Full details about Nursing Assistant...",
-      image: "image 58.png",
+      title: 'Nursing Assistant',
+      date: 'May 30, 2024',
+      description: 'Full details about Nursing Assistant...',
+      image: 'image 58.png',
     },
     {
-      title: "Doctor",
-      date: "May 30, 2024",
-      description:
-        "Full details about Doctor...",
-      image: "image 58.png",
+      title: 'Doctor',
+      date: 'May 30, 2024',
+      description: 'Full details about Doctor...',
+      image: 'image 58.png',
     },
   ];
 
@@ -46,11 +42,15 @@ const BlogDetail = () => {
   return (
     <>
       <Navbar />
-      <div className="max-w-4xl mx-auto mt-8 p-4">
-        <img src={blog.image} alt={blog.title} className="w-full h-96 object-cover rounded-md" />
-        <h1 className="text-3xl font-bold mt-6">{blog.title}</h1>
-        <p className="text-gray-500 text-sm mt-2">{blog.date}</p>
-        <p className="text-gray-700 mt-4">{blog.description}</p>
+      <div className='max-w-4xl mx-auto mt-8 p-4 h-screen'>
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className='w-full h-96 object-cover rounded-md'
+        />
+        <h1 className='text-3xl font-bold mt-6'>{blog.title}</h1>
+        <p className='text-gray-500 text-sm mt-2'>{blog.date}</p>
+        <p className='text-gray-700 mt-4'>{blog.description}</p>
       </div>
       <Footer />
     </>
