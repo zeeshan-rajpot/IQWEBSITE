@@ -43,7 +43,7 @@ const HomePageBlog = () => {
 
   return (
     <>
-      <div className='w-11/12 md:5/6 lg:5/6 2xl:w-4/6  py-10  mx-auto'>
+      <div className='w-11/12 md:5/6 lg:5/6 2xl:w-4/6  pyb-10  mx-auto'>
         <div className='flex justify-between my-5 items-center'>
           <h2 className='font-bold text-2xl md:text-3xl px-4 text-center'>
             Blogs
