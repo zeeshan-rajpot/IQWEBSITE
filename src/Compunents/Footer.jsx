@@ -9,10 +9,33 @@ const Footer = () => {
         </span>
 
         <div className='flex justify-center items-center'>
-          <img src='/public/x.svg' alt='' className='w-8 ms-2' />
-          <img src='/public/instagram.svg' alt='' className='w-8 ms-2' />
-          <img src='/public/tiktok.svg' alt='' className='w-8 ms-2' />
+          <a
+            href='https://x.com/iqdemie?s=21'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img src='/public/x.svg' alt='X' className='w-8 ms-2' />
+          </a>
+          <a
+            href='https://www.instagram.com/iqdemie?igsh=MW1uMjhlMzVyMTdhOQ=='
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img
+              src='/public/instagram.svg'
+              alt='Instagram'
+              className='w-8 ms-2'
+            />
+          </a>
+          <a
+            href='https://www.tiktok.com/@iqdemie?_t=8qXK2p88U0j&_r=1'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <img src='/public/tiktok.svg' alt='TikTok' className='w-8 ms-2' />
+          </a>
         </div>
+
         <ul className='flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0'>
           <Link to='/TermsPage'>
             <li>
