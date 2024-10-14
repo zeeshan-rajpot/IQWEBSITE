@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <section className='bg-[#E5F4FF]'>
@@ -12,9 +14,11 @@ const Footer = () => {
           <img src='/public/tiktok.svg' alt='' className='w-8 ms-2' />
         </div>
         <ul className='flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0'>
-          <li>
-            <a className='hover:underline'>Terms of Use</a>
-          </li>
+          <Link to='/TermsPage'>
+            <li>
+              <a className='hover:underline'>Terms of Use</a>
+            </li>
+          </Link>
         </ul>
       </footer>
     </section>

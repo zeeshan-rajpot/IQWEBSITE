@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import ReactApexChart from "react-apexcharts";
-import { userApi } from "../../api";
+import React, { useEffect, useState } from 'react';
+import ReactApexChart from 'react-apexcharts';
+import { userApi } from '../../api';
 
 const DistributionIq = () => {
   const [chartData, setChartData] = useState({
     options: {
       chart: {
-        type: "bar",
+        type: 'bar',
         toolbar: {
           show: false,
         },
@@ -14,26 +14,26 @@ const DistributionIq = () => {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "55%",
+          columnWidth: '55%',
           colors: {
-            backgroundBarColors: ["#EBEBEB"],
+            backgroundBarColors: ['#EBEBEB'],
             backgroundBarOpacity: 1,
             backgroundBarRadius: 5,
           },
           dataLabels: {
-            position: "top",
+            position: 'top',
           },
         },
       },
       xaxis: {
         categories: [
-          "60-69",
-          "70-79",
-          "80-89",
-          "90-99",
-          "100-109",
-          "110-119",
-          "120-129",
+          '60-69',
+          '70-79',
+          '80-89',
+          '90-99',
+          '100-109',
+          '110-119',
+          '120-129',
         ],
       },
       tooltip: {
@@ -48,22 +48,22 @@ const DistributionIq = () => {
       fill: {
         opacity: 1,
       },
-      colors: ["#3D9BD6"],
+      colors: ['#3D9BD6'],
       grid: {
-        borderColor: "#f1f1f1",
+        borderColor: '#f1f1f1',
       },
     },
 
     series: [
       {
-        name: "IQ",
+        name: 'IQ',
         data: [30, 40, 45, 50, 49, 60, 55],
       },
     ],
 
     title: [
       {
-        text: "General and international distribution of IQ",
+        text: 'General and international distribution of IQ',
       },
     ],
   });
@@ -71,7 +71,7 @@ const DistributionIq = () => {
   const fetchData = async () => {
     try {
       const response = await userApi.iqdistribution();
-      setChartData((prevData) => ({
+      setChartData(prevData => ({
         ...prevData,
         options: {
           ...prevData.options,
@@ -88,7 +88,7 @@ const DistributionIq = () => {
         ],
       }));
     } catch (error) {
-      console.error("Error fetching IQ distribution:", error);
+      console.error('Error fetching IQ distribution:', error);
     }
   };
 
@@ -96,10 +96,8 @@ const DistributionIq = () => {
     fetchData();
   }, []);
 
-
-
   return (
-    <div className="chart">
+    <div className='chart'>
       {/* <Chart
       options={chartData.options}
       series={chartData.series}
@@ -112,7 +110,7 @@ const DistributionIq = () => {
       <ReactApexChart
         options={chartData.options}
         series={chartData.series}
-        type="bar"
+        type='bar'
         height={350}
       />
     </div>

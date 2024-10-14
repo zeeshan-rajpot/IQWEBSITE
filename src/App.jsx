@@ -6,6 +6,7 @@ import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/Home';
 import Payment from './Pages/Payment/Payment';
 import TakeTest from './Pages/TakeTest/index';
+import TermsPage from './Pages/Terms/index';
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ function App() {
     {
       path: '/blogs',
       element: <Blogs />,
+    },
+    {
+      path: '/TermsPage',
+      element: <TermsPage />,
     },
     {
       path: '/blogs/blogdetails/:data',
