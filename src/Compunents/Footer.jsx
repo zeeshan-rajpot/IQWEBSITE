@@ -14,25 +14,21 @@ const Footer = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <img src='/public/x.svg' alt='X' className='w-8 ms-2' />
+            <img src='/x.svg' alt='X' className='w-8 ms-2' />
           </a>
           <a
             href='https://www.instagram.com/iqdemie?igsh=MW1uMjhlMzVyMTdhOQ=='
             target='_blank'
             rel='noopener noreferrer'
           >
-            <img
-              src='/public/instagram.svg'
-              alt='Instagram'
-              className='w-8 ms-2'
-            />
+            <img src='/instagram.svg' alt='Instagram' className='w-8 ms-2' />
           </a>
           <a
             href='https://www.tiktok.com/@iqdemie?_t=8qXK2p88U0j&_r=1'
             target='_blank'
             rel='noopener noreferrer'
           >
-            <img src='/public/tiktok.svg' alt='TikTok' className='w-8 ms-2' />
+            <img src='/tiktok.svg' alt='TikTok' className='w-8 ms-2' />
           </a>
         </div>
 
